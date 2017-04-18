@@ -4,8 +4,9 @@ let webpack = require('webpack');
 let CopyWebpackPlugin = require('copy-webpack-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let path = require('path');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = [
+
   new webpack.ProgressPlugin(),
   new webpack.ContextReplacementPlugin(
     // The (\\|\/) piece accounts for path separators in *nix and Windows
@@ -16,5 +17,6 @@ module.exports = [
     { from: 'index.html' },
     { from: 'favicon.ico' }
   ]),
-  new ExtractTextPlugin('style.bundle.css')
+  new ExtractTextPlugin('style.bundle.css'),
+  new BundleAnalyzerPlugin()
 ];
