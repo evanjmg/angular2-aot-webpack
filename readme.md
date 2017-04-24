@@ -1,8 +1,19 @@
 # Angular AOT (Ahead Of Time) Comparison
 [Credit goes to blacksonic for his example](https://david-dm.org/blacksonic/angular2-aot-webpack)
-[![devDependency Status](https://david-dm.org/blacksonic/angular2-aot-webpack/dev-status.svg)](https://david-dm.org/blacksonic/angular2-aot-webpack?type=dev)
+
 
 ## RESULTS FROM COMPARISON
+It seems there isn't all much a difference between the different webpack tools. Using a tool like Babili isn't very useful for Angular, but may be useful for larger bundles. It seems angular's webpack @ngtools plugin is still the most useful AOT loader and is even better than compiling and throwing code into webpack. I noticed this especially with large applications - being 16kb less than the other loaders ( e.g 300kb - moment, rxjs, router, forms, material).
+However, if you have the patience Rollup is still the best at tree shaking and it can save you loads if you invest time in it.
+
+| Type of AOT Loading  | Minified GZIP Output size |
+| ------------- | ------------- |
+| WEBPACK/NGTOOLS |  89.867 kb |
+| WEBPACK/NGTOOLS + BABILI |   90.267kb |
+| REGULAR CLI WITH BABILI + WEBPACK |  90.267kb |
+| REGULAR CLI WITH WEBPACK | 90.267kb |
+| NGC + ROLLUP |  86kb |
+
 
 
 ## SETUP INSTRUCTIONS
