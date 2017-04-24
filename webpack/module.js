@@ -1,30 +1,22 @@
 'use strict';
-
+let lodash = require('lodash');
 let path = require('path');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let TypescriptLoader;
 
+if (process.env.NGTOOLS) {
+  TypescriptLoader = { loader: '@ngtools/webpack' };
+} else {
+  TypescriptLoader = { use: ['awesome-typescript-loader?configFileName=tsconfig.json', 'angular2-template-loader'] };
+}
 module.exports = {
   rules: [
-    {
+    lodash.assign({
       test: /\.ts$/,
-      use: ['awesome-typescript-loader', 'angular2-template-loader']
-    },
+    }, TypescriptLoader),
     {
       test: /\.html$/,
       use: 'raw-loader'
-    },
-    {
-      test: /\.css$/,
-      include: path.resolve(process.cwd(), 'src', 'app'),
-      loaders: ['to-string-loader', 'css-loader']
-    },
-    {
-      test: /\.css$/,
-      exclude: path.resolve(process.cwd(), 'src', 'app'),
-      loader: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: 'css-loader'
-      })
     }
   ]
 };

@@ -19,14 +19,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.shim.ts",
-    "src/app/main*.ts",
-    "src/app/polyfill.ts"
+    "**/*.shim.ts"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
   "angularCompilerOptions": {
     "genDir": ".",
     "entryModule": "src/app/modules/main.module#MainModule"
